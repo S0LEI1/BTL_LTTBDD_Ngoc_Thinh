@@ -8,7 +8,7 @@ import {Home2, Notification, Profile} from 'iconsax-react-native'
 const Tab = createBottomTabNavigator();
 const MyTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Home_Screen" screenOptions={{ headerShown: false }}>
+    <Tab.Navigator initialRouteName="Profile_Screen" screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Trang chủ"
         component={Home_Screen}
