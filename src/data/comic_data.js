@@ -250,7 +250,7 @@ export const comic_data = [
     category: "Hành động,Manhwa",
     view: 2012547,
     image: require("../../assets/DQG.png"),
-    chapter: 20,
+    chapter: 100,
     isSave: true,
     isFavourite:false,
     image_chapter: [
