@@ -1,17 +1,27 @@
-import { View, Text, Pressable } from 'react-native'
-import React from 'react'
+import { View, Text, Pressable, SafeAreaView, StyleSheet } from "react-native";
+import React from "react";
 
-const Home = ({navigation, route}) => {
-  const id =1;
+const Home = ({ navigation, route }) => {
+  const id = 8;
   return (
-    <View>
-      <Pressable style={{backgroundColor:'cyan'}} onPress={()=>{
-        navigation.navigate('Image_Chapter', id)
-      }}>
+    <View style={styles.container}>
+      <Pressable
+        style={{ backgroundColor: "cyan",justifyContent: "center", alignItems: "center"  }}
+        onPress={() => {
+          navigation.navigate("Image_Chapter", id);
+        }}
+      >
         <Text>Doc</Text>
       </Pressable>
     </View>
-  )
-}
-
-export default Home
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+export default Home;
