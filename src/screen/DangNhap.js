@@ -7,7 +7,7 @@ export default function DangNhap({navigation}) {
 
         <View style={{width:'100%',height:'70px',justifyContent:'flex-start',flexDirection:'row',alignItems:'center'}}>
 
-            <Image style={{width:'41px',height:'41px',marginLeft:'20px'}} source={require('/assets/Funhub.png')} />
+            <Image style={{width:'41px',height:'41px',marginLeft:'20px'}} source={require('../../assets/Funhub.png')} />
             <Text style={{fontSize:22,fontWeight:'bold',fontFamily:'Inter',color:'#CC4900',marginLeft:'20px'}}>Funhub</Text>
         </View>
     <View  style={{width:'100%',height:'150px',justifyContent:'flex-start',}}>
@@ -19,12 +19,12 @@ export default function DangNhap({navigation}) {
 
     <View style={{width:'100%',height:'80px',justifyContent:'center',alignItems:'center',}}>
         <Pressable style={{width:'90%',height:'31px',backgroundColor:'#0F7ABC',borderRadius:5,flexDirection:'row',alignItems:'center'}} >
-        <Image style={{width:'28px',height:'28px'}} source={require('/assets/ggicon.png')} />
+        <Image style={{width:'28px',height:'28px'}} source={require('../../assets/ggicon.png')} />
         <Text style={{fontSize:13,fontWeight:'bold',color:'#ffff',marginLeft:'65px'}}>Đăng nhập bằng Google</Text>
 
         </Pressable>
         <Pressable style={{width:'90%',height:'31px',backgroundColor:'#0F7ABC',borderRadius:5,flexDirection:'row',alignItems:'center',marginTop:'15px'}} >
-        <Image style={{width:'28px',height:'28px'}} source={require('/assets/facebookicon.png')} />
+        <Image style={{width:'28px',height:'28px'}} source={require('../../assets/facebookicon.png')} />
         <Text style={{fontSize:13,fontWeight:'bold',color:'#ffff',marginLeft:'65px'}}>Đăng nhập bằng Facebook</Text>
 
         </Pressable>

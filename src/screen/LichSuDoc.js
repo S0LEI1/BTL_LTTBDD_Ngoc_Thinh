@@ -7,110 +7,110 @@ export default function LichSuDoc({navigation}) {
     const truyen=[
 
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },{
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
         },
         {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
+            image:require('../../assets/TênTruyKếtCụcCủaNhânVậtPhảnDiệnChỉCóThểLàCáiChết1.png'),
             name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
             chapter:'Chapter 2',
             author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
+            icon:require('../../assets/eye1.png'),
             view:'1.000',
     
     
@@ -124,7 +124,7 @@ export default function LichSuDoc({navigation}) {
     <View  style={{flex:1,padding:10,alignItems:'center',marginLeft:'20px',backgroundColor:'#FFFF'}}>
                  <View style={{width:'100%',height:'20px',justifyContent:'flex-start',flexDirection:'row',alignItems:'center'}}>
                     <Pressable>
-                    <Image style={{width:'20px',height:'12px'}} source={require('/assets/ArrowLeft.png')} />
+                    <Image style={{width:'20px',height:'12px'}} source={require('../../assets/ArrowLeft.png')} />
 
                     </Pressable>
                    <Text style={{fontSize:12,fontWeight:'bold',color:'#CC4900',marginLeft:'15px'}} >Lịch sử của bạn</Text>

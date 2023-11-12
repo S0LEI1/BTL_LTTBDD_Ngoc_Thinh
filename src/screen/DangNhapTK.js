@@ -9,7 +9,7 @@ export default function DangNhapTK() {
 
         <View style={{width:'100%',height:'70px',justifyContent:'flex-start',flexDirection:'row',alignItems:'center'}}>
 
-            <Image style={{width:'41px',height:'41px',marginLeft:'20px'}} source={require('/assets/Funhub.png')} />
+            <Image style={{width:'41px',height:'41px',marginLeft:'20px'}} source={require('../../assets/Funhub.png')} />
             <Text style={{fontSize:22,fontWeight:'bold',fontFamily:'Inter',color:'#CC4900',marginLeft:'20px'}}>Funhub</Text>
         </View>
     <View  style={{width:'100%',height:'100px',justifyContent:'flex-start',}}>
@@ -21,7 +21,7 @@ export default function DangNhapTK() {
         <View style={{width:344,height:120,}}>
         <Text style={{fontSize:15,fontWeight:"700"}}>Tai khoan</Text>
             <View style={{marginTop:10,justifyContent:'center'}} >
-                <Image source={require('/assets/user.png')} style={{width:20,height:20,position:'absolute'}}/>
+                <Image source={require('../../assets/user.png')} style={{width:20,height:20,position:'absolute'}}/>
 
                 <TextInput  placeholder='Tai khoan' style={{borderBottomColor:'black',paddingLeft:30,height:30,borderBottomWidth:1}}></TextInput>
             </View>
@@ -32,7 +32,7 @@ export default function DangNhapTK() {
 
                             setIsSecure((prev) => !prev )
                         }}>
-                <Image source={require('/assets/eye 1.png')} style={{width:20,height:20,position:'absolute',}}/>
+                <Image source={require('../../assets/eye1.png')} style={{width:20,height:20,position:'absolute',}}/>
                 </TouchableOpacity>
                 </View>
                

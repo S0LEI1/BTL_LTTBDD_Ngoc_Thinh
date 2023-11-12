@@ -20,7 +20,7 @@ export default function VietBaiDang({navigation}) {
         </TextInput>
     </View>
     <View style={{width:'100%'}}>
-    <Image source={require('/assets/image-add.png')} style={{width:40,height:40}} />
+    <Image source={require('../../assets/image-add.png')} style={{width:40,height:40}} />
     </View>
 
     <TouchableOpacity style={{justifyContent:'center',alignItems:'center',width:'100%',height:40,backgroundColor:'#CC4900',borderRadius:15,marginTop:10}} ><Text style={{fontSize:15,fontWeight:'normal',color:'#FFF'}}>ĐĂNG BÀI</Text></TouchableOpacity>

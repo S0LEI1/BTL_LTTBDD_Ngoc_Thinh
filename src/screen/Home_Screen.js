@@ -1,27 +1,37 @@
-import { View, Text, Pressable, SafeAreaView, StyleSheet } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+  ScrollView,
+} from "react-native";
+import React, { useEffect, useState } from "react";
+import styles from "../style/Home_style";
+import label from "../style/Text_style";
+import Header from "../component/Home/Header/Header";
+import For_You from "../component/Home/Body/ForYou";
+import Discover from "../component/Home/Body/Discover";
+import Post from "../component/Home/Body/Post";
+import { SearchNormal1 } from "iconsax-react-native";
 
+const FOR_YOU = "FOR_YOU";
+const DISCOVER = "DISCOVER";
+const POST = "POST";
 const Home = ({ navigation, route }) => {
-  const id = 8;
+  const [page, setPage] = useState(DISCOVER);
   return (
     <View style={styles.container}>
-      <Pressable
-        style={{ backgroundColor: "cyan",justifyContent: "center", alignItems: "center"  }}
-        onPress={() => {
-          navigation.navigate("Image_Chapter", id);
-        }}
-      >
-        <Text>Doc</Text>
-      </Pressable>
+      <StatusBar backgroundColor="white" />
+      <Header page={page} setPage={setPage} />
+      <ScrollView>
+      {
+        page == DISCOVER ?  <Discover /> : ((page== POST) ? <Post /> : <For_You />)
+      }
+      </ScrollView>
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 export default Home;
