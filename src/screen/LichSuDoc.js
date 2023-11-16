@@ -1,125 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View,Image, Pressable,Text, ScrollView, FlatList} from 'react-native'
+import  { useEffect, useState } from "react";
+import { comic_data } from "../data/comic_data";
 
 
-
-export default function LichSuDoc({navigation}) {
-    const truyen=[
-
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },{
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        {
-            image:require('/assets/Tên Truyện_ Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết 1.png'),
-            name:'Kết Cục Của Nhân Vật Phản Diện Chỉ Có Thể Là Cái Chết',
-            chapter:'Chapter 2',
-            author:'Tác giả',
-            icon:require('/assets/eye 1.png'),
-            view:'1.000',
-    
-    
-        },
-        
-
-    
-    ]
-    const [state,setState]=useState(truyen);
+export default function LichSuDoc({navigation,route}) {
+    var [comic, setComic] = useState({});
+    var getComic = () => {
+      comic_data.map((item) => {
+        if (item.id == route.params) {
+          setComic(item);
+        }
+      });
+    };
+    useEffect(() => {
+      getComic();
+    });
+    const deleteTruyen =(comic)=>{
+        const newComic= myComicArray.filter(item => item.id !== comic.id)
+        setComic(newComic);
+    }
   return (
     <View  style={{flex:1,padding:10,alignItems:'center',marginLeft:'20px',backgroundColor:'#FFFF'}}>
                  <View style={{width:'100%',height:'20px',justifyContent:'flex-start',flexDirection:'row',alignItems:'center'}}>
@@ -130,14 +30,14 @@ export default function LichSuDoc({navigation}) {
                    <Text style={{fontSize:12,fontWeight:'bold',color:'#CC4900',marginLeft:'15px'}} >Lịch sử của bạn</Text>
                  </View>
     <ScrollView style={{width:'100%',height:'100%',position:'absolute',marginTop:'25px'}}>
-    <FlatList numColumns={1} data={state} renderItem={({item}) => {
+    <FlatList numColumns={1} data={comic_data} renderItem={({item}) => {
         return (
            <View style={{width:'100%',height:'135px', flexDirection:'row',marginTop:'10px' }} >
                 <View style={{width:'100px',height:'130px',}}>
                     <Image  source={item.image} style={{width:'100px',height:'135px',borderRadius:7}}/>
 
                 </View>
-                <View style={{width:'60%',height:'135px',paddingLeft:10}}>
+                <View style={{width:'60%',height:'135px',paddingLeft:10,justifyContent:'space-around'}}>
                     <Text style={{fontSize:12,fontWeight:'bold'}}>{item.name}</Text>
                     <View style={{width:'58px',height:'20px',backgroundColor:'#707070',borderRadius:5,justifyContent:'center',alignItems:'center',marginTop:'10px'}}>
 
@@ -148,7 +48,7 @@ export default function LichSuDoc({navigation}) {
 
                     <View>
                         <View style={{width:'80px',height:'20px',borderRadius:5,alignItems:'center',flexDirection:'row',marginTop:'20px',gap:10}}>
-                            <Image source={item.icon} style={{width:'18px',height:'18px'}} />
+                            <Image source={require('/assets/eye 1.png')} style={{width:'18px',height:'18px'}} />
                             <Text>{item.view}</Text>
                         </View>
                         

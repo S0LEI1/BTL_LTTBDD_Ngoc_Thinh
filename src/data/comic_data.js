@@ -4,7 +4,7 @@ export const comic_data = [
     name: "Doremon",
     category: "Phieu luu",
     view: 2012547,
-    image: require("../../assets/DQG.png"),
+    image: require("../../assets/Doremon.png"),
     chapter: 20,
     isSave: true,
     isFavourite:false,
