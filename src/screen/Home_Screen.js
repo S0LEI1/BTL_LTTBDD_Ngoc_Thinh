@@ -22,14 +22,24 @@ const DISCOVER = "DISCOVER";
 const POST = "POST";
 const Home = ({ navigation, route }) => {
   const [page, setPage] = useState(DISCOVER);
+  const { user } = route.params;
+  // const [userData, setUserData] = ({});
+  // useEffect(()=>{
+  //   setUserData(user)
+  // },[])
+  // console.log(userData);
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="white" />
       <Header page={page} setPage={setPage} />
       <ScrollView>
-      {
-        page == DISCOVER ?  <Discover /> : ((page== POST) ? <Post /> : <For_You />)
-      }
+        {page == DISCOVER ? (
+          <Discover navigation={navigation} route={route}/>
+        ) : page == POST ? (
+          <Post navigation={navigation} route={route} />
+        ) : (
+          <For_You navigation={navigation} route={route} />
+        )}
       </ScrollView>
     </View>
   );

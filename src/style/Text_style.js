@@ -15,6 +15,13 @@ const label = StyleSheet.create({
     titleFont:{
         fontSize:20,
         fontWeight:'700',
-    }
+    },
+    color:{
+        color:"#CC4900"
+    },
+    desciptionFont:{
+        fontSize:13, 
+        fontWeight:'400'
+    },
 })
 export default label;

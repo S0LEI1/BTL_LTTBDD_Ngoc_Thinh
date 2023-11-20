@@ -1,10 +1,17 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React from 'react'
 
-const Post = () => {
+const Post = ({navigation, route}) => {
+  const {category, data} = route.params;
+  console.log(category);
+  console.log(data);
   return (
     <View>
-      <Text>Post</Text>
+      <Pressable onPress={()=>{
+        navigation.navigate('Profile')
+      }}>
+        <Text>{JSON.stringify(category)}</Text>
+      </Pressable>
     </View>
   )
 }

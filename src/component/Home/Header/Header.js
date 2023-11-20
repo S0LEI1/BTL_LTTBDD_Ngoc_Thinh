@@ -24,7 +24,7 @@ const Header = ({page, setPage}) => {
             setPage("FOR_YOU");
           }}
         >
-          <Text style={[label.primaryFont, { color: "#CC4900" }]}>
+          <Text style={[label.primaryFont, label.color ]}>
             Dành cho bạn
           </Text>
           {page == "FOR_YOU" ? <View style={styles.underline} /> : null}
@@ -35,7 +35,7 @@ const Header = ({page, setPage}) => {
             setPage("DISCOVER");
           }}
         >
-          <Text style={[label.primaryFont, { color: "#CC4900" }]}>
+          <Text style={[label.primaryFont,label.color]}>
             Khám phá
           </Text>
           {page == "DISCOVER" ? <View style={styles.underline} /> : null}
@@ -46,7 +46,7 @@ const Header = ({page, setPage}) => {
             setPage("POST");
           }}
         >
-          <Text style={[label.primaryFont, { color: "#CC4900" }]}>
+          <Text style={[label.primaryFont, label.color ]}>
             Bài viết
           </Text>
           {page == "POST" ? <View style={styles.underline} /> : null}

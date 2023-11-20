@@ -10,15 +10,19 @@ import React, { useEffect, useState } from "react";
 import { comic_data } from "../../../data/comic_data";
 import label from "../../../style/Text_style";
 import styles from "../../../style/Discover_style";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const screenWidth = Dimensions.get("window").width;
 
-const Discover = () => {
+const Discover = ({ navigation, route }) => {
   const [carousel, setTopCarousel] = useState(comic_data);
   const [appoint, setAppoint] = useState(comic_data);
   const [topView, setTopView] = useState(comic_data);
   const [manhua, setManhua] = useState(comic_data);
   const [manhwa, setManhwa] = useState(comic_data);
-  const [newComnic,setNewCommic] = useState(comic_data)
+  const [newComnic, setNewCommic] = useState(comic_data);
+  const MANHUA = "Manhua";
+  const MANHWA = "Manhwa";
   const top_carousel = carousel.filter(
     function (item) {
       if (this.count < 5 && item.view > 12000) {
@@ -32,7 +36,7 @@ const Discover = () => {
 
   const appoint_commic = appoint.filter(
     function (item) {
-      if (this.count < 5) {
+      if (this.count < 5 && item.isSave == true) {
         this.count++;
         return true;
       }
@@ -42,7 +46,7 @@ const Discover = () => {
   );
   const manhua_comic = manhua
     .filter(function (item) {
-      return item.category.includes("Manhua");
+      return item.category.includes(MANHUA);
     })
     .sort((a, b) => {
       return b.view - a.view;
@@ -54,7 +58,7 @@ const Discover = () => {
     .slice(0, 5);
   const manhwa_comic = manhwa
     .filter(function (item) {
-      return item.category.includes("Manhwa");
+      return item.category.includes(MANHWA);
     })
     .sort((a, b) => {
       return b.view - a.view;
@@ -66,7 +70,9 @@ const Discover = () => {
     setManhua(manhua_comic);
     setManhwa(manhwa_comic);
   }, []);
-
+  const navigationCommicDetail = (item) => {
+    navigation.navigate("Commic_Detail", { data: item });
+  };
   return (
     <View>
       {/* Top carousel */}
@@ -77,21 +83,22 @@ const Discover = () => {
           showsVerticalScrollIndicator={false}
           keyExtractor={(i) => i.id}
           renderItem={({ item }) => (
-            <Pressable>
-              <Pressable style={styles.carousel}>
-                <View style={styles.carouselBox}>
-                  <Image
-                    style={styles.carouselImg}
-                    source={item.image}
-                    resizeMode="stretch"
-                  />
-                </View>
-                <View style={styles.titleBox}>
-                  <Text style={[label.primaryFont, { color: "#fff" }]}>
-                    {item.name}
-                  </Text>
-                </View>
-              </Pressable>
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={styles.carousel}
+            >
+              <View style={styles.carouselBox}>
+                <Image
+                  style={styles.carouselImg}
+                  source={item.image}
+                  resizeMode="stretch"
+                />
+              </View>
+              <View style={styles.titleBox}>
+                <Text style={[label.primaryFont, { color: "#fff" }]}>
+                  {item.name}
+                </Text>
+              </View>
             </Pressable>
           )}
         />
@@ -103,7 +110,10 @@ const Discover = () => {
           horizontal
           data={appoint}
           renderItem={({ item }) => (
-            <Pressable style={styles.commicBox}>
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={styles.commicBox}
+            >
               <Image
                 style={styles.commicImg}
                 source={item.image}
@@ -127,7 +137,10 @@ const Discover = () => {
           horizontal
           data={topView}
           renderItem={({ item, index }) => (
-            <Pressable style={styles.commicBox}>
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={styles.commicBox}
+            >
               <Image
                 source={item.image}
                 style={[styles.commicImg, { position: "relative" }]}
@@ -157,16 +170,24 @@ const Discover = () => {
           }}
         >
           <Text style={label.titleFont}>Manhua</Text>
-          <Pressable>
+          <Pressable
+            onPress={() => {
+              navigation.navigate("List_Commic", {
+                category: MANHUA,
+                data: manhua_comic,
+              });
+            }}
+          >
             <Text>Xem thêm</Text>
           </Pressable>
         </View>
         <View>
           <FlatList
             horizontal
-            data={manhua.splice(0, 1)}
+            data={manhua.slice(0, 1)}
             renderItem={({ item }) => (
               <Pressable
+                onPress={() => navigationCommicDetail(item)}
                 key={item.id}
                 style={[
                   styles.carousel,
@@ -193,7 +214,11 @@ const Discover = () => {
           horizontal
           data={manhua.slice(1, 5)}
           renderItem={({ item, index }) => (
-            <Pressable style={styles.commicBox} key={item.id}>
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={styles.commicBox}
+              key={item.id}
+            >
               <Image source={item.image} style={styles.commicImg} />
               <Text
                 numberOfLines={2}
@@ -216,17 +241,25 @@ const Discover = () => {
           }}
         >
           <Text style={label.titleFont}>Manhwa</Text>
-          <Pressable>
+          <Pressable
+            onPress={() =>
+              navigation.navigate("List_Commic", {
+                category: MANHWA,
+                data: manhwa_comic,
+              })
+            }
+          >
             <Text>Xem thêm</Text>
           </Pressable>
         </View>
         <View>
           <FlatList
             horizontal
-            data={manhwa.splice(0, 1)}
+            data={manhwa.slice(0, 1)}
             renderItem={({ item }) => (
               <Pressable
                 key={item.id}
+                onPress={() => navigationCommicDetail(item)}
                 style={[
                   styles.carousel,
                   { marginRight: 0, width: screenWidth - 40 },
@@ -252,7 +285,11 @@ const Discover = () => {
           horizontal
           data={manhwa.slice(1, 5)}
           renderItem={({ item, index }) => (
-            <Pressable style={styles.commicBox} key={item.id}>
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={styles.commicBox}
+              key={item.id}
+            >
               <Image source={item.image} style={styles.commicImg} />
               <Text
                 numberOfLines={2}
@@ -268,16 +305,32 @@ const Discover = () => {
       {/* Mới cập nhật */}
       <View>
         <Text style={label.titleFont}>Mới cập nhật</Text>
-        <FlatList horizontal data={newComnic.slice(0,7)} renderItem={({item})=>(
-          <Pressable style={[styles.commicBox,{height:220}]}>
-            <Image source={item.image} resizeMode="stretch" style={styles.commicImg} />
-            <Text numberOfLines={2}
-                ellipsizeMode="tail" style={label.secondFont}>{item.name}</Text>
-            <Text>Chap {item.chapter}</Text>
-          </Pressable>
-        )} />
+        <FlatList
+          horizontal
+          data={newComnic.slice(0, 7)}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() => navigationCommicDetail(item)}
+              style={[styles.commicBox, { height: 220 }]}
+            >
+              <Image
+                source={item.image}
+                resizeMode="stretch"
+                style={styles.commicImg}
+              />
+              <Text
+                numberOfLines={2}
+                ellipsizeMode="tail"
+                style={label.secondFont}
+              >
+                {item.name}
+              </Text>
+              <Text>Chap {item.chapter}</Text>
+            </Pressable>
+          )}
+        />
       </View>
-      <View style={{height:30}} />
+      <View style={{ height: 30 }} />
     </View>
   );
 };
