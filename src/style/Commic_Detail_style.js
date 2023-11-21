@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal:20
+    marginHorizontal:10
   },
   teamImg: {
     width: 40,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   btnFollow: {
-    width: 80,
+    width: 110,
     height: 30,
     backgroundColor: "#530478",
     borderRadius: 30,

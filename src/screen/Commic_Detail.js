@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import styles from "../style/Commic_Detail_style";
 import { ArrowLeft, Chart, Eye, HambergerMenu } from "iconsax-react-native";
 import label from "../style/Text_style";
-
+const FOLLOW ='Theo dõi'
+const UNFOLLOW ='Hủy theo dõi'
 const Commic_Detail = ({ navigation, route }) => {
   const { data } = route.params;
     const [commicData, setCommicData] = useState({});
+    const [follow, setFollow] = useState(data.isSave)
     useEffect(()=>{
         setCommicData(data);
     },[])
+    
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -22,8 +25,8 @@ const Commic_Detail = ({ navigation, route }) => {
           />
           <Text style={label.secondFont}>{data.team_translate}</Text>
         </View>
-        <Pressable style={styles.btnFollow}>
-          <Text style={[label.primaryFont, { color: "#fff" }]}>Theo dõi</Text>
+        <Pressable onPress={()=>setFollow(!follow)} style={styles.btnFollow}>
+          <Text style={[label.primaryFont, { color: "#fff" }]}>{follow ? UNFOLLOW : FOLLOW}</Text>
         </Pressable>
       </View>
       {/* Detail */}
