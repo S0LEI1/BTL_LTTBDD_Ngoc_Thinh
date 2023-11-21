@@ -30,6 +30,7 @@ export default function App() {
         <Stack.Screen name="Commic_Detail" component={Commic_Detail} />
         <Stack.Screen name="Image_Chapter" component={Image_Chapter} />
         <Stack.Screen name="Chapter_List" component={Chapter_List} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
