@@ -11,7 +11,7 @@ const MyTabs = ({ navigation, route }) => {
 
   return (
     <Tab.Navigator
-      initialRouteName="Thông báo"
+      initialRouteName="Trang chủ"
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen

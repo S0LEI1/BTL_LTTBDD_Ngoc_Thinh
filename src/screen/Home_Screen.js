@@ -32,7 +32,6 @@ const Home = ({ navigation, route }) => {
     <View style={styles.container}>
       <StatusBar backgroundColor="white" />
       <Header page={page} setPage={setPage} />
-      <ScrollView>
         {page == DISCOVER ? (
           <Discover navigation={navigation} route={route}/>
         ) : page == POST ? (
@@ -40,7 +39,7 @@ const Home = ({ navigation, route }) => {
         ) : (
           <For_You navigation={navigation} route={route} />
         )}
-      </ScrollView>
+
     </View>
   );
 };

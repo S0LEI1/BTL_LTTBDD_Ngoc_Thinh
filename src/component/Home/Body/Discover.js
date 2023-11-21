@@ -5,6 +5,7 @@ import {
   Pressable,
   Image,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { comic_data } from "../../../data/comic_data";
@@ -74,131 +75,155 @@ const Discover = ({ navigation, route }) => {
     navigation.navigate("Commic_Detail", { data: item });
   };
   return (
-    <View>
-      {/* Top carousel */}
+    <ScrollView>
       <View>
-        <FlatList
-          data={carousel}
-          horizontal
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(i) => i.id}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={styles.carousel}
-            >
-              <View style={styles.carouselBox}>
+        {/* Top carousel */}
+        <View>
+          <FlatList
+            data={carousel}
+            horizontal
+            showsVerticalScrollIndicator={false}
+            keyExtractor={(i) => i.id}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => navigationCommicDetail(item)}
+                style={styles.carousel}
+              >
+                <View style={styles.carouselBox}>
+                  <Image
+                    style={styles.carouselImg}
+                    source={item.image}
+                    resizeMode="stretch"
+                  />
+                </View>
+                <View style={styles.titleBox}>
+                  <Text style={[label.primaryFont, { color: "#fff" }]}>
+                    {item.name}
+                  </Text>
+                </View>
+              </Pressable>
+            )}
+          />
+        </View>
+        {/* Truyện đề cử */}
+        <View>
+          <Text style={[label.titleFont, { fontWeight: "700" }]}>
+            Fuho đề cử
+          </Text>
+          <FlatList
+            horizontal
+            data={appoint}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => navigationCommicDetail(item)}
+                style={styles.commicBox}
+              >
                 <Image
-                  style={styles.carouselImg}
+                  style={styles.commicImg}
                   source={item.image}
                   resizeMode="stretch"
                 />
-              </View>
-              <View style={styles.titleBox}>
-                <Text style={[label.primaryFont, { color: "#fff" }]}>
+                <Text
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={[label.secondFont, { textAlign: "center" }]}
+                >
                   {item.name}
                 </Text>
-              </View>
-            </Pressable>
-          )}
-        />
-      </View>
-      {/* Truyện đề cử */}
-      <View>
-        <Text style={[label.titleFont, { fontWeight: "700" }]}>Fuho đề cử</Text>
-        <FlatList
-          horizontal
-          data={appoint}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={styles.commicBox}
-            >
-              <Image
-                style={styles.commicImg}
-                source={item.image}
-                resizeMode="stretch"
-              />
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={[label.secondFont, { textAlign: "center" }]}
+              </Pressable>
+            )}
+          />
+        </View>
+        {/* Top view */}
+        <View>
+          <Text style={label.titleFont}>Top lượt xem</Text>
+          <FlatList
+            horizontal
+            data={topView}
+            renderItem={({ item, index }) => (
+              <Pressable
+                onPress={() => navigationCommicDetail(item)}
+                style={styles.commicBox}
               >
-                {item.name}
-              </Text>
-            </Pressable>
-          )}
-        />
-      </View>
-      {/* Top view */}
-      <View>
-        <Text style={label.titleFont}>Top lượt xem</Text>
-        <FlatList
-          horizontal
-          data={topView}
-          renderItem={({ item, index }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={styles.commicBox}
-            >
-              <Image
-                source={item.image}
-                style={[styles.commicImg, { position: "relative" }]}
-                resizeMode="stretch"
-              />
-              <View style={[styles.numberBox]}>
-                <Text>{index + 1}</Text>
-              </View>
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={label.secondFont}
-              >
-                {item.name}
-              </Text>
-            </Pressable>
-          )}
-        />
-      </View>
-      {/* Manhua */}
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={label.titleFont}>Manhua</Text>
-          <Pressable
-            onPress={() => {
-              navigation.navigate("List_Commic", {
-                category: MANHUA,
-                data: manhua_comic,
-              });
+                <Image
+                  source={item.image}
+                  style={[styles.commicImg, { position: "relative" }]}
+                  resizeMode="stretch"
+                />
+                <View style={[styles.numberBox]}>
+                  <Text>{index + 1}</Text>
+                </View>
+                <Text
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={label.secondFont}
+                >
+                  {item.name}
+                </Text>
+              </Pressable>
+            )}
+          />
+        </View>
+        {/* Manhua */}
+        <View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            <Text>Xem thêm</Text>
-          </Pressable>
-        </View>
-        <View>
+            <Text style={label.titleFont}>Manhua</Text>
+            <Pressable
+              onPress={() => {
+                navigation.navigate("List_Commic", {
+                  category: MANHUA,
+                  data: manhua_comic,
+                });
+              }}
+            >
+              <Text>Xem thêm</Text>
+            </Pressable>
+          </View>
+          <View>
+            <FlatList
+              horizontal
+              data={manhua.slice(0, 1)}
+              renderItem={({ item }) => (
+                <Pressable
+                  onPress={() => navigationCommicDetail(item)}
+                  key={item.id}
+                  style={[
+                    styles.carousel,
+                    { marginRight: 0, width: screenWidth - 40 },
+                  ]}
+                >
+                  <Image
+                    source={item.image}
+                    resizeMode="stretch"
+                    style={styles.carouselImg}
+                  />
+                  <Text
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                    style={label.secondFont}
+                  >
+                    {item.name}
+                  </Text>
+                </Pressable>
+              )}
+            />
+          </View>
           <FlatList
             horizontal
-            data={manhua.slice(0, 1)}
-            renderItem={({ item }) => (
+            data={manhua.slice(1, 5)}
+            renderItem={({ item, index }) => (
               <Pressable
                 onPress={() => navigationCommicDetail(item)}
+                style={styles.commicBox}
                 key={item.id}
-                style={[
-                  styles.carousel,
-                  { marginRight: 0, width: screenWidth - 40 },
-                ]}
               >
-                <Image
-                  source={item.image}
-                  resizeMode="stretch"
-                  style={styles.carouselImg}
-                />
+                <Image source={item.image} style={styles.commicImg} />
                 <Text
                   numberOfLines={2}
                   ellipsizeMode="tail"
@@ -210,66 +235,66 @@ const Discover = ({ navigation, route }) => {
             )}
           />
         </View>
-        <FlatList
-          horizontal
-          data={manhua.slice(1, 5)}
-          renderItem={({ item, index }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={styles.commicBox}
-              key={item.id}
-            >
-              <Image source={item.image} style={styles.commicImg} />
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={label.secondFont}
-              >
-                {item.name}
-              </Text>
-            </Pressable>
-          )}
-        />
-      </View>
-      {/* Manhwa */}
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={label.titleFont}>Manhwa</Text>
-          <Pressable
-            onPress={() =>
-              navigation.navigate("List_Commic", {
-                category: MANHWA,
-                data: manhwa_comic,
-              })
-            }
+        {/* Manhwa */}
+        <View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
-            <Text>Xem thêm</Text>
-          </Pressable>
-        </View>
-        <View>
+            <Text style={label.titleFont}>Manhwa</Text>
+            <Pressable
+              onPress={() =>
+                navigation.navigate("List_Commic", {
+                  category: MANHWA,
+                  data: manhwa_comic,
+                })
+              }
+            >
+              <Text>Xem thêm</Text>
+            </Pressable>
+          </View>
+          <View>
+            <FlatList
+              horizontal
+              data={manhwa.slice(0, 1)}
+              renderItem={({ item }) => (
+                <Pressable
+                  key={item.id}
+                  onPress={() => navigationCommicDetail(item)}
+                  style={[
+                    styles.carousel,
+                    { marginRight: 0, width: screenWidth - 40 },
+                  ]}
+                >
+                  <Image
+                    source={item.image}
+                    resizeMode="stretch"
+                    style={styles.carouselImg}
+                  />
+                  <Text
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                    style={label.secondFont}
+                  >
+                    {item.name}
+                  </Text>
+                </Pressable>
+              )}
+            />
+          </View>
           <FlatList
             horizontal
-            data={manhwa.slice(0, 1)}
-            renderItem={({ item }) => (
+            data={manhwa.slice(1, 5)}
+            renderItem={({ item, index }) => (
               <Pressable
-                key={item.id}
                 onPress={() => navigationCommicDetail(item)}
-                style={[
-                  styles.carousel,
-                  { marginRight: 0, width: screenWidth - 40 },
-                ]}
+                style={styles.commicBox}
+                key={item.id}
               >
-                <Image
-                  source={item.image}
-                  resizeMode="stretch"
-                  style={styles.carouselImg}
-                />
+                <Image source={item.image} style={styles.commicImg} />
                 <Text
                   numberOfLines={2}
                   ellipsizeMode="tail"
@@ -281,57 +306,37 @@ const Discover = ({ navigation, route }) => {
             )}
           />
         </View>
-        <FlatList
-          horizontal
-          data={manhwa.slice(1, 5)}
-          renderItem={({ item, index }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={styles.commicBox}
-              key={item.id}
-            >
-              <Image source={item.image} style={styles.commicImg} />
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={label.secondFont}
+        {/* Mới cập nhật */}
+        <View>
+          <Text style={label.titleFont}>Mới cập nhật</Text>
+          <FlatList
+            horizontal
+            data={newComnic.slice(0, 7)}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => navigationCommicDetail(item)}
+                style={[styles.commicBox, { height: 220 }]}
               >
-                {item.name}
-              </Text>
-            </Pressable>
-          )}
-        />
+                <Image
+                  source={item.image}
+                  resizeMode="stretch"
+                  style={styles.commicImg}
+                />
+                <Text
+                  numberOfLines={2}
+                  ellipsizeMode="tail"
+                  style={label.secondFont}
+                >
+                  {item.name}
+                </Text>
+                <Text>Chap {item.chapter}</Text>
+              </Pressable>
+            )}
+          />
+        </View>
+        <View style={{ height: 30 }} />
       </View>
-      {/* Mới cập nhật */}
-      <View>
-        <Text style={label.titleFont}>Mới cập nhật</Text>
-        <FlatList
-          horizontal
-          data={newComnic.slice(0, 7)}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => navigationCommicDetail(item)}
-              style={[styles.commicBox, { height: 220 }]}
-            >
-              <Image
-                source={item.image}
-                resizeMode="stretch"
-                style={styles.commicImg}
-              />
-              <Text
-                numberOfLines={2}
-                ellipsizeMode="tail"
-                style={label.secondFont}
-              >
-                {item.name}
-              </Text>
-              <Text>Chap {item.chapter}</Text>
-            </Pressable>
-          )}
-        />
-      </View>
-      <View style={{ height: 30 }} />
-    </View>
+    </ScrollView>
   );
 };
 
