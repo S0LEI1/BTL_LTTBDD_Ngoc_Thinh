@@ -44,8 +44,8 @@ const Profile_Screen = ({ route, navigation }) => {
       </View>
       {/* account */}
       <View>
-        <Text style={[label.primaryFont, { fontWeight: 700 }]}>
-          Quản lý tài khoản
+        <Text style={[label.primaryFont, { fontWeight: 700, }]}>
+          QUẢN LÝ TÀI KHOẢN
         </Text>
         <View style={styles.accBox}>
           <ProfileCircle size={45} style={styles.iconUser} />
@@ -126,7 +126,7 @@ const Profile_Screen = ({ route, navigation }) => {
           }}
         >
           <Text style={[label.primaryFont, { fontWeight: "600" }]}>
-            Lịch sử của bản
+            Lịch sử của bạn
           </Text>
           <Pressable onPress={()=>navigation.navigate('List_Commic',{
             category : "Lịch sử",

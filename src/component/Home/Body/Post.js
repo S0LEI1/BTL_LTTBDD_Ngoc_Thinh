@@ -1,7 +1,8 @@
-import { View, Text, Pressable, ProgressBarAndroidBase,Image,FlatList, ActivityIndicator} from 'react-native'
+import { View, Text, Pressable, ProgressBarAndroidBase,Image,FlatList, ActivityIndicator,TouchableOpacity} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Heart, ProfileCircle } from 'iconsax-react';
 import VietBaiDang from '../../../screen/VietBaiDang';
+
 
 const Post = ({navigation, route}) => {
   const {category, data} = route.params;
@@ -10,6 +11,7 @@ const Post = ({navigation, route}) => {
   const [datacomment,setDataComment]=useState([]);
   const [postText, setPostText] = useState('');
   const [isLoading,setIsLoanding]=useState(true);
+  const [visible, setVisible] = useState(true)
   const handlePost = async () => {
     try {
       await AsyncStorage.setItem('post', postText);
@@ -83,7 +85,13 @@ renderItem=({item,index})=>{
           </View>
           <View style={{flexDirection:'row',height:30,alignItems:'center',justifyContent:'space-between'}}>
             <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',gap:5}}>
-              <Image source={require('../../../../assets/love.png')} style={{width:20,height:20}}/>
+              <TouchableOpacity  onPress={() => 
+                setVisible( !visible)
+              }>{visible ?
+              <Image source={require('../../../../assets/love.png')} style={{width:20,height:20}}/> : <Image source={require('../../../../assets/heart.png')} style={{width:20,height:20}}/>
+              }
+              </TouchableOpacity>
+              
               <Text>Like</Text>
               </View>
               <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',gap:5}}>

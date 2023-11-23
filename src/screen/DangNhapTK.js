@@ -15,7 +15,7 @@ export default function DangNhapTK({ navigation, route }) {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
-  
+  const [visible, setVisible] = useState(true)
   useEffect(() => {
     function findLinksByName(id) {
         for(const item of user_data){
@@ -79,16 +79,16 @@ export default function DangNhapTK({ navigation, route }) {
           Trải nghiệm hàng loạt nội dung đặc sắc và luôn luôn miễn phí!
         </Text>
       </View>
-      <View style={{ width: 344, height: 120 }}>
-        <Text style={{ fontSize: 15, fontWeight: "700" }}>Tai khoan</Text>
+      <View style={{ width: 344, height: 120 ,margin:10}}>
+        <Text style={{ fontSize: 15, fontWeight: "700" }}>Tài khoản</Text>
         <View style={{ marginTop: 10, justifyContent: "center" }}>
           <Image
             source={require("../../assets/user.png")}
-            style={{ width: 20, height: 20, position: "absolute" }}
+            style={{ width: 25, height: 25, position: "absolute" }}
           />
 
           <TextInput
-            placeholder="Tai khoan"
+            placeholder="Tài khoản"
             onChangeText={(text) => {
               setUserName(text);
             }}
@@ -100,24 +100,26 @@ export default function DangNhapTK({ navigation, route }) {
             }}
           ></TextInput>
         </View>
-        <Text style={{ fontSize: 15, fontWeight: "700" }}>Mat khau</Text>
+        <Text style={{ fontSize: 15, fontWeight: "700" }}>Mật khẩu</Text>
         <View style={{ marginTop: 10, justifyContent: "center" }}>
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                setIsSecure((prev) => !prev);
-              }}
-            >
-              <Image
-                source={require("../../assets/eye1.png")}
-                style={{ width: 20, height: 20, position: "absolute" }}
-              />
-            </TouchableOpacity>
-          </View>
+          
+
+         <View style={{alignItems:'center',width:19}}>
+            <Pressable style={{position:'absolute',width:25,height:25}}
+              onPress={() => 
+                setVisible( !visible)
+              }
+            >{visible ?
+               <Image source={require("../../assets/eye1.png")} style={{ width: 25, height: 25,position:'absolute'}}/> : <Image source={require("../../assets/hidden.png")}style={{ width: 25, height: 25, position:'absolute'}}
+              /> }
+            </Pressable>
+            </View>
+           
+          
 
           <TextInput
             secureTextEntry={isSecure}
-            placeholder="Mat khau"
+            placeholder="Mật khẩu"
             onChangeText={(text) => {
               setPassword(text);
             }}
@@ -131,7 +133,7 @@ export default function DangNhapTK({ navigation, route }) {
         </View>
       </View>
       <View
-        style={{ justifyContent: "center", alignItems: "center", width: 344 }}
+        style={{ justifyContent: "center", alignItems: "center", width: 344,margin:10 }}
       >
         <Text style={{ fontSize: 13, fontWeight: "500", color: "#666666" }}>
           Thông qua việc đăng nhập tài khoản đồng nghĩa với việc bạn chấp nhận
