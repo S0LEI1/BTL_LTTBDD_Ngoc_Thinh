@@ -62,9 +62,9 @@ renderItem=({item,index})=>{
 
       </View>
       {isLoading ? <ActivityIndicator/> :(
-      <FlatList style={{flex:1,width:390}} data={datacomment} renderItem={({item})=>
+      <FlatList style={{flex:1,width:360}} data={datacomment} renderItem={({item})=>
       (
-        <View style={{borderBottomWidth:2,width:360,height:150,borderBottomColor:'lightgray',margin:10}}>
+        <View style={{borderBottomWidth:2,width:330,height:150,borderBottomColor:'lightgray'}}>
          <View style={{flex:1,flexDirection:'row',gap:10}}>
 
           <View style={{flex:1,flexDirection:'row',gap:10}}>
